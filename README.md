@@ -1,7 +1,3 @@
-Claro! Aqui está uma versão aprimorada e mais fluida do seu README, com foco em clareza, organização e legibilidade:
-
----
-
 # 💰 Painel de Ativos Digitais
 
 Aplicativo Flutter que consome a API do CoinMarketCap para exibir informações em tempo real sobre criptomoedas. O projeto adota os princípios da **Clean Architecture** e utiliza **Provider** para o gerenciamento de estado.
@@ -183,7 +179,3 @@ Este projeto é ideal para estudos e prototipagem. Para uso em produção, consi
 * Criar um backend intermediário
 * Evitar o uso de `--disable-web-security` em produção
 * Escolher um plano da API adequado ao seu volume
-
----
-
-Se quiser, posso gerar um modelo de `LICENSE`, `.gitignore` e estrutura inicial de testes também. Deseja isso?
