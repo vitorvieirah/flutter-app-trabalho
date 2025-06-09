@@ -1,15 +1,23 @@
-# Painel de Ativos Digitais
+Claro! Aqui está uma versão aprimorada e mais fluida do seu README, com foco em clareza, organização e legibilidade:
 
-Um aplicativo Flutter que consome a API do CoinMarketCap para exibir informações sobre ativos digitais em tempo real. O projeto segue os princípios da Clean Architecture e utiliza Provider para gerenciamento de estado.
+---
 
-## 📋 Pré-requisitos
+# 💰 Painel de Ativos Digitais
 
-Antes de começar, certifique-se de ter instalado:
+Aplicativo Flutter que consome a API do CoinMarketCap para exibir informações em tempo real sobre criptomoedas. O projeto adota os princípios da **Clean Architecture** e utiliza **Provider** para o gerenciamento de estado.
 
-- [Flutter SDK](https://flutter.dev/docs/get-started/install) (versão 3.0 ou superior)
-- [Dart SDK](https://dart.dev/get-dart) (incluído com Flutter)
-- Um navegador web (Chrome recomendado)
-- Editor de código (VS Code, Android Studio, ou similar)
+---
+
+## 📦 Pré-requisitos
+
+Antes de começar, certifique-se de que os seguintes itens estejam instalados:
+
+* [Flutter SDK 3.0+](https://flutter.dev/docs/get-started/install)
+* Dart SDK (incluso no Flutter)
+* Navegador (Google Chrome recomendado)
+* Editor de código como VS Code ou Android Studio
+
+---
 
 ## 🚀 Como configurar e executar o projeto
 
@@ -26,156 +34,156 @@ cd api_market_cap_coin
 flutter pub get
 ```
 
-### 3. Execute o projeto
+### 3. Execute no navegador (modo desenvolvimento)
 
-**IMPORTANTE:** Para executar este projeto no navegador, você deve usar o comando específico abaixo(para evitar problemas com cors ):
+Devido a restrições de CORS, é necessário desabilitar a segurança do navegador durante o desenvolvimento:
 
 ```bash
 flutter run -d chrome --web-browser-flag "--disable-web-security"
 ```
 
-#### Por que usar `--disable-web-security`?
+> ⚠️ **Atenção:** Este comando deve ser utilizado apenas em ambiente de desenvolvimento.
 
-Este projeto consome a API do CoinMarketCap diretamente do navegador. Por questões de segurança, os navegadores implementam uma política chamada **CORS (Cross-Origin Resource Sharing)** que bloqueia requisições entre diferentes domínios.
-
-Como a API do CoinMarketCap não possui configuração CORS adequada para aplicações web client-side, precisamos desabilitar temporariamente essa verificação no Chrome durante o desenvolvimento.
-
-
-### 4. Comandos alternativos
-
-Se você quiser executar em outros dispositivos:
+### 4. Executar em outros dispositivos (opcional)
 
 ```bash
-# Para Android (com dispositivo conectado)
+# Android (dispositivo físico ou emulador)
 flutter run -d android
 
-# Para iOS (apenas no macOS)
+# iOS (apenas no macOS)
 flutter run -d ios
 
-# Para Windows desktop
+# Windows
 flutter run -d windows
 ```
 
-## Estrutura do Projeto
+---
 
-O projeto segue a Clean Architecture com a seguinte estrutura:
+## 🗂️ Estrutura do Projeto
+
+O projeto é organizado com base na Clean Architecture:
 
 ```
 lib/
-├── configs/
-│   └── network_settings.dart       # Configurações de rede
-├── core/
+├── configs/                          # Configurações gerais
+│   └── network_settings.dart
+├── core/                             # Componentes reutilizáveis
 │   ├── library/
-│   │   └── app_defaults.dart        # Padrões da aplicação
+│   │   └── app_defaults.dart
 │   └── service/
-│       └── network_client.dart      # Cliente de rede
-├── data/
+│       └── network_client.dart
+├── data/                             # Camada de dados
 │   ├── datasources/
-│   │   └── digital_asset_remote_source.dart  # Fonte de dados remota
+│   │   └── digital_asset_remote_source.dart
 │   └── repositories/
-│       └── digital_asset_repository.dart     # Implementação do repositório
-├── domain/
+│       └── digital_asset_repository.dart
+├── domain/                           # Regras de negócio
 │   ├── entities/
-│   │   └── digital_asset_model.dart          # Modelos de domínio
+│   │   └── digital_asset_model.dart
 │   └── repositories/
-│       └── i_digital_asset_repository.dart   # Interface do repositório
-├── ui/
+│       └── i_digital_asset_repository.dart
+├── ui/                               # Interface do usuário
 │   ├── pages/
-│   │   └── asset_dashboard_screen.dart       # Tela principal
+│   │   └── asset_dashboard_screen.dart
 │   └── view_models/
-│       └── digital_asset_controller.dart     # Controlador
-└── main.dart                                 # Ponto de entrada
+│       └── digital_asset_controller.dart
+└── main.dart                         # Entrada da aplicação
 ```
 
-## Funcionalidades
+---
 
-- ✅ Painel de ativos digitais em tempo real
-- ✅ Exibição de preços em USD e BRL
-- ✅ Filtro por nome ou símbolo do ativo
-- ✅ Pull-to-refresh para atualizar dados
-- ✅ Dialog com detalhes do ativo digital
-- ✅ Tratamento de erros e estados de carregamento
-- ✅ Interface responsiva e moderna com layout em grade
+## ✨ Funcionalidades
 
-## 🔑 Configuração da API
+* ✅ Painel com cotações em tempo real
+* ✅ Exibição em USD e BRL
+* ✅ Filtro por nome ou símbolo
+* ✅ Atualização via pull-to-refresh
+* ✅ Diálogo com informações detalhadas
+* ✅ Tratamento de erros e loading states
+* ✅ Layout responsivo e moderno em grid
 
-### Obtendo sua própria chave da API
+---
 
-**IMPORTANTE:** Este projeto inclui uma chave de API de demonstração que pode ter limitações. Para uso completo, você deve obter sua própria chave:
+## 🔑 Configuração da API CoinMarketCap
 
-1. **Acesse o site do CoinMarketCap:**
-   - Vá para [https://coinmarketcap.com/api/](https://coinmarketcap.com/api/)
-   - Clique em "Get Your API Key Now"
+### 1. Obtenha sua chave de API
 
-2. **Crie uma conta gratuita:**
-   - Faça o cadastro com seu email
-   - Confirme sua conta
-   - Acesse o dashboard da API
+1. Acesse: [https://coinmarketcap.com/api/](https://coinmarketcap.com/api/)
+2. Crie uma conta gratuita
+3. Acesse o dashboard e copie sua chave (formato: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`)
 
-3. **Copie sua chave da API:**
-   - No dashboard, você verá sua API Key
-   - Copie a chave (formato: `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`)
+### 2. Configure no projeto
 
-### Configurando sua chave no projeto
+No arquivo `lib/configs/network_settings.dart`, substitua:
 
-**Substitua a chave padrão pela sua própria chave:**
-
-1. Abra o arquivo `lib/configs/network_settings.dart`
-2. Localize a linha:
-   ```dart
-   static const String authToken = '31322d00-32f2-4a36-9749-f8133b5661a2';
-   ```
-3. Substitua pela sua chave:
-   ```dart
-   static const String authToken = 'SUA_CHAVE_AQUI';
-   ```
-
-### Planos disponíveis
-
-- **Basic (Gratuito):** 333 chamadas/dia, dados básicos
-- **Hobbyist ($29/mês):** 3.333 chamadas/dia, mais endpoints
-- **Startup ($79/mês):** 10.000 chamadas/dia, dados históricos
-- **Standard ($249/mês):** 33.333 chamadas/dia, suporte prioritário
-
-**Nota:** Para uso em produção, recomenda-se:
-1. Mover a chave da API para variáveis de ambiente
-2. Implementar um backend intermediário
-3. Nunca expor chaves de API no código client-side
-4. Usar um plano pago adequado ao volume de uso
-
-
-
-## 🐛 Solução de Problemas
-
-### Erro: "ClientException: Failed to fetch"
-
-Este erro indica problema com CORS. Certifique-se de estar usando o comando correto:
-
-```bash
-flutter run -d chrome --web-browser-flag "--disable-web-security"
+```dart
+static const String authToken = '31322d00-32f2-4a36-9749-f8133b5661a2';
 ```
 
-### Erro: "No device found"
+Por:
 
-Verifique se o Chrome está instalado e execute:
+```dart
+static const String authToken = 'SUA_CHAVE_AQUI';
+```
+
+> ⚠️ **Dica de segurança:** Para produção, armazene a chave de API em variáveis de ambiente ou utilize um backend intermediário. **Nunca exponha sua chave em apps client-side.**
+
+### Planos da API
+
+| Plano    | Chamadas/dia | Recursos            |
+| -------- | ------------ | ------------------- |
+| Free     | 333          | Dados básicos       |
+| Hobbyist | 3.333        | Mais endpoints      |
+| Startup  | 10.000       | Dados históricos    |
+| Standard | 33.333       | Suporte prioritário |
+
+---
+
+## 🐞 Solução de Problemas
+
+### Erro: `ClientException: Failed to fetch`
+
+Esse erro ocorre por CORS. Use o comando com `--disable-web-security`.
+
+### Erro: `No device found`
+
+Certifique-se de que o Chrome está instalado e execute:
 
 ```bash
 flutter devices
 ```
 
-### Problemas com dependências
+### Problemas com pacotes
 
-Limpe o cache e reinstale:
+Execute:
 
 ```bash
 flutter clean
 flutter pub get
 ```
 
+---
+
 ## 🛠️ Tecnologias Utilizadas
 
-- **Flutter** - Framework de desenvolvimento
-- **Provider** - Gerenciamento de estado
-- **HTTP** - Requisições de rede
-- **Intl** - Formatação de números e datas
-- **CoinMarketCap API** - Dados de criptomoedas
+* **Flutter** – Framework principal
+* **Dart** – Linguagem de programação
+* **Provider** – Gerenciamento de estado
+* **HTTP** – Comunicação com APIs
+* **Intl** – Formatação de valores
+* **CoinMarketCap API** – Fonte dos dados de criptomoedas
+
+---
+
+## 📌 Considerações Finais
+
+Este projeto é ideal para estudos e prototipagem. Para uso em produção, considere:
+
+* Utilizar uma chave de API privada e segura
+* Criar um backend intermediário
+* Evitar o uso de `--disable-web-security` em produção
+* Escolher um plano da API adequado ao seu volume
+
+---
+
+Se quiser, posso gerar um modelo de `LICENSE`, `.gitignore` e estrutura inicial de testes também. Deseja isso?
